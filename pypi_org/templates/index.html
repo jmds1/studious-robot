@@ -1,33 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Python Package Index (demo)</title>
-</head>
-<body>
+{% extends "_layout.html" %}
+{% block main_content %}
 
-<style>
-    .title{
-        font-weight: bold;
-    }
-</style>
+    <h1>Python Package Index</h1>
 
-<h1>Python Package Index</h1>
+    <h2>Packages</h2>
 
-<h2>Packages</h2>
+    {% for p in packages %}
 
-{% for p in packages %}
-
-<div>
+        <div>
     <span class="title">
         {{ p.name.upper() }}
     </span>
-    <span class="version">
+            <span class="version">
         {{ p.version }}
     </span>
-</div>
+        </div>
 
-{% endfor %}
-
-</body>
-</html>
+    {% endfor %}
+{% endblock %}
