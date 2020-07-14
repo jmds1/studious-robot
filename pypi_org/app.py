@@ -1,5 +1,7 @@
 import flask
 
+from infrastructure.view_modifiers import response
+
 app = flask.Flask(__name__)
 
 
@@ -12,14 +14,16 @@ def get_latest_package():
 
 
 @app.route('/')
+@response(template_file='home/index.html')
 def index():
     test_packages = get_latest_package()
-    return flask.render_template('index.html', packages=test_packages)
+    return {'packages': test_packages}
+    # return flask.render_template('home/index.html', packages=test_packages)
 
 
 @app.route('/about')
 def about():
-    return flask.render_template('about.html')
+    return flask.render_template('home/about.html')
 
 
 if __name__ == '__main__':
